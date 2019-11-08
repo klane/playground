@@ -3,3 +3,6 @@
 
 # Local virtual environment
 .venv/
+
+# TensorBoard logs
+logs/
