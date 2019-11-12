@@ -40,7 +40,7 @@ def save_animation(anim_file, filenames, file_dir='.'):
 
 
 # save images at the current epoch
-def save_images(images, epoch, image_dir, rows, cols):
+def save_images(images, rows, cols, epoch, image_dir='.'):
     plot_images(images, rows, cols)
     plt.savefig(os.path.join(image_dir, f'digits_{epoch:04d}.png'))
     plt.close()
