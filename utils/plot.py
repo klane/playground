@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 
 
@@ -14,5 +16,5 @@ def plot_images(images, rows, cols):
 # save images at the current epoch
 def save_images(images, epoch, image_dir, rows, cols):
     plot_images(images, rows, cols)
-    plt.savefig(f'{image_dir}/digits_{epoch:04d}.png')
+    plt.savefig(os.path.join(image_dir, f'digits_{epoch:04d}.png'))
     plt.close()
