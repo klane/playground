@@ -32,3 +32,22 @@ def get_strategy():
 
     print("Number of accelerators:", strategy.num_replicas_in_sync)
     return strategy
+
+
+def load_data(xmin=0, xmax=1):
+    (X_train, y_train), (X_test, y_test) = tf.keras.datasets.mnist.load_data()
+    image_shape = (28, 28, 1)
+
+    # add channel to images (required by tensorflow)
+    X_train = X_train.reshape(X_train.shape[0], *image_shape)
+    X_test = X_test.reshape(X_test.shape[0], *image_shape)
+
+    # convert images to floats
+    X_train = X_train.astype('float32')
+    X_test = X_test.astype('float32')
+
+    # normalize images to [xmin,xmax]
+    X_train = X_train * (xmax - xmin) / 255 + xmin
+    X_test = X_test * (xmax - xmin) / 255 + xmin
+
+    return (X_train, y_train), (X_test, y_test)
